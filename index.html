@@ -1,0 +1,48 @@
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>Location Based AR.js demo</title>
+    <script src="https://aframe.io/releases/1.0.4/aframe.min.js"></script>
+    <script src="https://unpkg.com/aframe-look-at-component@0.8.0/dist/aframe-look-at-component.min.js"></script>
+    <script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar-nft.js"></script>
+    <script src="https://raw.githack.com/donmccurdy/aframe-extras/master/dist/aframeextras.loaders.min.js"></script>
+    <style>
+        body,a-scene {
+            position:absolute;
+            top:0;
+            left:0;
+            bottom:0;
+            right:0;
+        }
+    </style>
+  </head>
+
+  <body style="margin: 0; overflow: hidden;">
+        <a-scene
+        renderer="logarithmicDepthBuffer:true;"
+        loading-screen="enabled:false;"
+        vr-mode-ui="enabled: false"
+        embedded
+        arjs="sourceType: webcam; debugUIEnabled: false;"
+        >
+        <!-- <a-assets>
+        <img id="vicinity2" src="{!!asset('img/logo.jpg')!!}">
+        <a-asset-item id="avatarModel" src="assets/vm-pin.gltf"></a-asset-item>
+        </a-assets> -->
+        <a-entity mindar-image-target="targetIndex: 0" look-at="[gps-camera]" gps-entity-place="latitude:-34.007416829;longitude:18.46224832;" animation="property: rotation; to: 0 -359 0; dur: 6000; easing: linear; loop: true;">
+            <a-sphere color="white" radius="5.4" position="0 3 0"  src="https://logodix.com/logo/1253755.png" ></a-sphere>
+            <a-cone color="#4e71a8" radius-bottom="0.01" radius-top="1" position="0 -4 0" scale="5 10 5"></a-cone>
+              <!--  <a-box color="white" position="0 2 -5" rotation="0 45 45" height="1" width="1" depth="1" scale ="10 10 10" src="{!!asset('img/logo.jpg')!!}">
+            </a-box> -->
+            <!-- <a-camera gps-camera rotation-reader> </a-camera> -->
+            <!-- <a-plane src="#vicinity2" position="0 0 0" height="0.552" width="1" rotation="0 0 0"></a-plane>-->
+            <a-gltf-model rotation="0 0 0 " position="0 0 0" scale="5 5 5" src="C:/Users/tmann/Desktop/ar/assets/vm-pin.gltf" animation="property: position; to: 0 0.1 0.1; dur: 1000; easing: easeInOutQuad; loop: true; dir: alternate"></a-gltf-model>
+        </a-entity>
+        <a-entity position="-3 0 50">
+        <a-camera gps-camera rotation-reader> </a-camera>
+        </a-entity>
+        <a-sky color="skyblue"></a-sky>
+        </a-scene>
+  </body>
+</html>
