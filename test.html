@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" href="https://unpkg.com/swiper@8/swiper-bundle.min.css"/>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css">
+        <style>
+            .swiper, .swiper-slide{
+                width: {!!$banner->width!!}px;
+		        height: {!!$banner->height!!}px;
+            }
+            .swiping-area{
+                width:100%;
+                height:{!!$banner->height/2!!}px;
+            }
+            .first{
+                background-image:url('https://gourmetads.com/wp-content/uploads/2019/02/300x250-weber.jpg');
+                /* background-color:skyblue; */
+                color:white;
+
+            }
+            .second{
+                background-color:violet;
+                color:white;
+            }
+            body{
+                margin:0;
+            }
+            .fa::after, .fa::before{
+                font-size:275%;
+                margin-right:10px;
+            }
+            .fa{
+                opacity: 1;
+                margin-top:10px;
+            }
+            .fa-caret-right{
+                float:right;
+                opacity: 0;
+            }
+            .fa-hand-pointer{
+                margin-left:10px;
+            }
+            .swiping-area{
+                position: absolute;
+                top:0;
+                background:linear-gradient(rgba(0,0,0,0.85), transparent);
+            }
+            .fa-hand-pointer{
+                margin-top:20px;
+            }
+            .fa-hand-pointer:before{
+                font-size:150%;
+            }
+            .swiping-area p{
+                font-family: 'Arial';
+                font-size: 133%;
+                text-align: right;
+                margin: 10px;
+                position: absolute;
+                top: 31%;
+                left:120%;
+                animation-name:panOver;
+                animation-duration:4s;
+                animation-iteration-count:infinite;
+                animation-delay:0s;
+                animation-timing-function: linear;
+            }
+            .slide-right{
+                position: absolute;
+                animation-name:slideRight;
+                animation-duration:2s;
+                animation-iteration-count:infinite;
+                animation-delay:0s;
+            }
+            .fade-first{
+                animation-name:fadeInOut;
+                animation-duration:5s;
+                animation-iteration-count:infinite;
+                animation-delay:0.5s;
+            }
+            .fade-second{
+                animation-name:fadeInOut;
+                animation-duration:5s;
+                animation-iteration-count:infinite;
+                animation-delay:1s;
+            }
+            .fade-third{
+                animation-name:fadeInOut;
+                animation-duration:5s;
+                animation-iteration-count:infinite;
+                animation-delay:1.5s;
+            }
+            @keyframes slideRight {
+                0%{
+                    left:0%;
+                }
+                100%{
+                    left:37%;
+                }
+            }
+            @keyframes panOver {
+                0%{
+                    left:120%;
+                }
+                100%{
+                    left:-33%;
+                }
+            }
+            @keyframes fadeInOut {
+                0%{
+                    opacity:0;
+                }
+                50%{
+                    opacity:1;
+                }
+                100%{
+                    opacity:0;
+                }
+            }
+            .hidden{
+                display:none;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="swiper">
+            <!-- Additional required wrapper -->
+            <div class="swiper-wrapper">
+                <div class="swiper-slide first">
+                    <div class="swiping-area">
+                        <i class="fa fa-hand-pointer slide-right" id="first"></i>
+                        <i class="fa fa-caret-right fade-third"></i><i class="fa fa-caret-right fade-second"></i><i class="fa fa-caret-right fade-first"></i>
+                        <p>SWIPE</p>
+                    </div>
+                </div>
+                <div class="swiper-slide second"></div>
+            </div>
+            <div class="swiper-pagination"></div>
+
+            <!--<div class="swiper-button-prev"></div>
+            <div class="swiper-button-next"></div>-->
+
+            <!--<div class="swiper-scrollbar"></div>-->
+        </div>
+    </body>
+    <footer>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-mobile/1.4.1/jquery.mobile.min.js" integrity="sha512-wSacGPS/KRyVB67O4xD+Eh1OX4/dq4juZj9DKTokRt81BzLbfsSMtNgR9Pu8FLr4kLbk5oNr9Hq+5PeWLCX8mA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+        <script src="https://unpkg.com/swiper@8/swiper-bundle.min.js"></script>
+        <script>
+            const swiper = new Swiper('.swiper', {
+                // Optional parameters
+                direction: 'horizontal',
+                loop: true,
+                grabCursor: true,
+                effect: "creative",
+                creativeEffect: {
+                    prev: {
+                        shadow: true,
+                        translate: [0, 0, -400],
+                    },
+                    next: {
+                        translate: ["100%", 0, 0],
+                    },
+                },
+            });
+            $(document).ready(function(){
+                $('.first').on('swipe', function(){
+                    $('.swiping-area').addClass('hidden');
+                });
+            });
+        </script>
+    </footer>
+</html>
